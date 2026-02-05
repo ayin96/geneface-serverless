@@ -39,8 +39,12 @@ RUN pip install cython openmim==0.3.9
 RUN mim install mmcv==2.1.0
 RUN pip install -r docs/prepare_env/requirements.txt || true
 
-# Install additional dependencies
-RUN pip install soundfile librosa gdown runpod einops kornia
+# Install critical dependencies for inference (requirements.txt may fail silently)
+RUN pip install soundfile librosa gdown runpod einops kornia \
+    face_alignment trimesh PyMCubes lpips mediapipe decord timm \
+    pretrainedmodels faiss-cpu pytorch_lightning transformers \
+    opencv-python-headless scipy scikit-image configargparse \
+    praat-parselmouth moviepy pillow av beartype torchdiffeq
 
 # Build torch-ngp extensions
 RUN bash docs/prepare_env/install_ext.sh || true
