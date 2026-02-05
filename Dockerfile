@@ -28,6 +28,12 @@ RUN pip install --upgrade pip
 # Install PyTorch with CUDA 11.7
 RUN pip install torch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 --index-url https://download.pytorch.org/whl/cu117
 
+# Install pytorch3d (build from source for CUDA 11.7 + PyTorch 2.0.1)
+RUN pip install "git+https://github.com/facebookresearch/pytorch3d.git@stable"
+
+# Install tensorboardX
+RUN pip install tensorboardX
+
 # Clone GeneFace++
 WORKDIR /app
 RUN git clone https://github.com/yerfor/GeneFacePlusPlus.git
