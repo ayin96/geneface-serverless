@@ -40,7 +40,7 @@ RUN mim install mmcv==2.1.0
 RUN pip install -r docs/prepare_env/requirements.txt || true
 
 # Install additional dependencies
-RUN pip install soundfile librosa gdown runpod einops
+RUN pip install soundfile librosa gdown runpod einops kornia
 
 # Build torch-ngp extensions
 RUN bash docs/prepare_env/install_ext.sh || true
