@@ -3,10 +3,10 @@ FROM nvidia/cuda:11.7.1-cudnn8-devel-ubuntu22.04
 ENV DEBIAN_FRONTEND=noninteractive
 ENV PYTHONUNBUFFERED=1
 
-# Install system dependencies
+# Install system dependencies (Python 3.10 is default in Ubuntu 22.04)
 RUN apt-get update && apt-get install -y \
-    python3.9 \
-    python3.9-dev \
+    python3 \
+    python3-dev \
     python3-pip \
     git \
     ffmpeg \
@@ -15,10 +15,11 @@ RUN apt-get update && apt-get install -y \
     portaudio19-dev \
     libgl1-mesa-glx \
     wget \
+    ninja-build \
     && rm -rf /var/lib/apt/lists/*
 
-# Set Python 3.9 as default
-RUN update-alternatives --install /usr/bin/python python /usr/bin/python3.9 1
+# Set Python 3 as default
+RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 1
 RUN update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 1
 
 # Upgrade pip
