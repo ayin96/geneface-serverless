@@ -28,8 +28,8 @@ RUN pip install --upgrade pip
 # Install PyTorch with CUDA 11.7
 RUN pip install torch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 --index-url https://download.pytorch.org/whl/cu117
 
-# Install pytorch3d (build from source for CUDA 11.7 + PyTorch 2.0.1)
-RUN pip install "git+https://github.com/facebookresearch/pytorch3d.git@stable"
+# Install pytorch3d from pre-built wheel (CUDA 11.7 + PyTorch 2.0.1 + Python 3.10)
+RUN pip install pytorch3d -f https://dl.fbaipublicfiles.com/pytorch3d/packaging/wheels/py310_cu117_pyt201/download.html
 
 # Install tensorboardX
 RUN pip install tensorboardX
